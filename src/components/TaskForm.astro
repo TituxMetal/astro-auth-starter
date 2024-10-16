@@ -1,0 +1,17 @@
+---
+import Button from '~ui/Button.astro'
+import Input from '~ui/Input.astro'
+import Textarea from '~ui/Textarea.astro'
+---
+
+<form
+  action='/api/tasks'
+  method='POST'
+  class='mt-4 h-fit w-full space-y-8 rounded-md border-2 border-gray-600 p-4'
+>
+  <h2 class='mb-4 text-2xl font-bold'>Add or Update Task</h2>
+  <Input name='title' placeholder='Task Title' required />
+  <Textarea name='description' placeholder='Task Description' />
+  <Input type='date' name='dueDate' />
+  <Button type='submit'>Add Task</Button>
+</form>
