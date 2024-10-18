@@ -1,8 +1,9 @@
 ---
-export interface Props {
+export interface Props extends astroHTML.JSX.InputHTMLAttributes {
   type?: 'text' | 'email' | 'password' | 'number' | 'date'
   name: string
   value?: string
+  id?: string
   placeholder?: string
   required?: boolean
   class?: string
@@ -12,6 +13,7 @@ const {
   type = 'text',
   name,
   value = '',
+  id,
   placeholder,
   required = false,
   class: className = ''
@@ -24,5 +26,6 @@ const {
   placeholder={placeholder}
   value={value}
   required={required}
+  id={id}
   class={`w-full px-3 py-2 text-zinc-300 border rounded-lg focus:outline-none focus:border-blue-500 ${className}`}
 />

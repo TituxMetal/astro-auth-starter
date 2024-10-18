@@ -1,5 +1,5 @@
 ---
-export interface Props {
+export interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
   type?: 'button' | 'submit' | 'reset'
   class?: string
 }
