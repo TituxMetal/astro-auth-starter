@@ -1,5 +1,4 @@
 // @ts-check
-// @ts-check
 import { defineConfig } from 'astro/config'
 
 import react from '@astrojs/react'
@@ -10,7 +9,9 @@ import node from '@astrojs/node'
 export default defineConfig({
   integrations: [react(), tailwind()],
   output: 'server',
-
+  security: {
+    checkOrigin: true
+  },
   adapter: node({
     mode: 'standalone'
   })
