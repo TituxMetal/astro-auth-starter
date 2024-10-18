@@ -1,4 +1,4 @@
-import { prismaClient } from '~/lib/prisma'
+import { prisma } from '~/lib/prisma'
 
 // Generate 5 sample tasks to seed in prisma database
 const tasks = [
@@ -38,12 +38,12 @@ const seed = async () => {
   console.log('Start seeding ...')
 
   // Delete existing tasks
-  await prismaClient.task.deleteMany()
+  await prisma.task.deleteMany()
   console.log('Deleted existing tasks')
 
   // Create new tasks
   for (const task of tasks) {
-    const createdTask = await prismaClient.task.create({
+    const createdTask = await prisma.task.create({
       data: task
     })
     console.log(`Created task with id: ${createdTask.id}`)
@@ -58,5 +58,5 @@ seed()
     process.exit(1)
   })
   .finally(async () => {
-    await prismaClient.$disconnect()
+    await prisma.$disconnect()
   })
