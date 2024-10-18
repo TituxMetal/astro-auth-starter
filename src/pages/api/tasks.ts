@@ -1,8 +1,8 @@
 import type { APIRoute } from 'astro'
-import { prismaClient } from '~/lib/prisma'
+import { prisma } from '~/lib/prisma'
 
 export const GET: APIRoute = async () => {
-  const tasks = await prismaClient.task.findMany()
+  const tasks = await prisma.task.findMany()
 
   return new Response(JSON.stringify(tasks), {
     status: 200,
@@ -21,7 +21,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
   const dueDate = formData.get('dueDate') as string
 
   try {
-    await prismaClient.task.create({
+    await prisma.task.create({
       data: {
         title,
         description,
@@ -29,7 +29,7 @@ export const POST: APIRoute = async ({ request, redirect }) => {
       }
     })
 
-    return redirect('/')
+    return redirect('/tasks')
   } catch (error) {
     console.error(error)
     return new Response(JSON.stringify({ error: 'Failed to create task' }), {
