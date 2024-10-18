@@ -1,5 +1,4 @@
 import { PrismaClient } from '@prisma/client'
-
 // 1. Import libSQL and the Prisma libSQL driver adapter
 import { createClient } from '@libsql/client'
 import { PrismaLibSQL } from '@prisma/adapter-libsql'
@@ -16,6 +15,6 @@ export const libsql = createClient({
 })
 
 // 3. Instantiate the libSQL driver adapter
-const adapter = new PrismaLibSQL(libsql)
+const prismaAdapter = new PrismaLibSQL(libsql)
 // Pass the adapter option to the Prisma Client instance
-export const prismaClient = new PrismaClient({ adapter })
+export const prisma = new PrismaClient({ adapter: prismaAdapter })
