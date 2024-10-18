@@ -18,7 +18,7 @@ pnpm-debug.log*
 .env.production
 
 prisma/*.db
-prisma/*.journal
+prisma/*-journal
 prisma/*_index
 prisma/*.db-shm
 prisma/*.db-wal
