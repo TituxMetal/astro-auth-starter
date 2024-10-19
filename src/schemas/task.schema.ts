@@ -8,5 +8,5 @@ export const taskSchema = z.object({
     .string()
     .transform(date => new Date(date))
     .optional(),
-  isPublic: z.boolean().optional()
+  isPublic: z.boolean().optional().default(true)
 })
