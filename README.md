@@ -58,6 +58,26 @@ To seed the database, run:
 npx prisma db seed
 ```
 
+#### Quick notes
+
+I don't remember exactly what the errors were, but, at a certain point, I had to do the following to
+get the migrations to work:
+
+1. Delete all the database tables in Turso
+2. Delete the database files in the `prisma` directory
+3. Run the
+   `npx prisma migrate diff --from-empty --to-schema-datamodel prisma/schema.prisma --script > migration.sql`
+   command
+4. Run the `turso db shell astro-auth < ./migration.sql` command
+5. Run the `npx prisma migrate dev` command that also creates the Prisma Client
+6. Run the `npx prisma db seed` command
+
+References:
+
+- [An excellent blog post about the Prisma Turso integration by Alex Ruheni](https://www.prisma.io/blog/prisma-turso-ea-support-rXGd_Tmy3UXX)
+- [The Prisma Turso Docs](https://www.prisma.io/docs/orm/overview/databases/turso)
+- [The Turso Docs](https://docs.turso.tech/introduction)
+
 ### Using the Prisma Client in your code
 
 To use the Prisma Client in your code, you need to import it from `~/lib/prisma` and use it as
