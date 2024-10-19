@@ -6,30 +6,35 @@ const tasks = [
     title: 'Add Prisma to the project',
     description: 'Add Prisma to the project',
     status: 'pending',
+    isPublic: true,
     dueDate: new Date('2024-10-15')
   },
   {
     title: 'Make a database schema',
     description: 'Make a database schema',
     status: 'pending',
+    isPublic: true,
     dueDate: new Date('2024-10-15')
   },
   {
     title: 'Add a form input component',
     description: 'Add a form input component',
     status: 'pending',
+    isPublic: true,
     dueDate: new Date('2024-10-15')
   },
   {
     title: 'Add an api route to create a new task',
     description: 'Add an api route to create a new task',
     status: 'pending',
+    isPublic: false,
     dueDate: new Date('2024-10-15')
   },
   {
     title: 'Add an api route to get all tasks',
     description: 'Add an api route to get all tasks',
     status: 'pending',
+    isPublic: false,
     dueDate: new Date('2024-10-15')
   }
 ]
