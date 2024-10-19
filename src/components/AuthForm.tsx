@@ -1,35 +1,8 @@
 import { actions, isInputError } from 'astro:actions'
 import { navigate } from 'astro:transitions/client'
-import React, { forwardRef, useRef, useState } from 'react'
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
-  return (
-    <input
-      {...props}
-      ref={ref}
-      className='w-full rounded-lg border-2 border-zinc-300 px-3 py-2 text-zinc-300 focus:border-sky-400 focus:outline-none'
-    />
-  )
-})
-
-Input.displayName = 'FormInput'
-
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode
-}
-
-const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
-  return (
-    <button
-      {...props}
-      className='w-fit rounded-lg border-2 border-transparent bg-blue-400 px-4 py-2 font-bold text-zinc-900 hover:bg-blue-400/80 focus:outline-none focus:ring-2 focus:ring-sky-400 focus:ring-offset-2 focus:ring-offset-transparent'
-    >
-      {children}
-    </button>
-  )
-}
+import React, { useRef, useState } from 'react'
+import { Button } from './ui/Button'
+import { Input } from './ui/Input'
 
 interface InputErrors {
   username?: string[]
