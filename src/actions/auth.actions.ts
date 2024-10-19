@@ -81,7 +81,7 @@ export const auth = {
         const hashedPassword = await new Argon2id().hash(input.password)
         // Create a new user
         const userId = generateIdFromEntropySize(15)
-        console.log('userId', userId)
+
         await prisma.$transaction([
           prisma.user.create({
             data: {
@@ -124,8 +124,6 @@ export const auth = {
   logout: defineAction({
     accept: 'form',
     handler: async (_, context) => {
-      console.log('context.locals', context.locals)
-
       if (!context.locals.session) {
         return new Response(null, {
           status: 401

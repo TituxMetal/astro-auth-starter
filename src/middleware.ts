@@ -14,7 +14,6 @@ const dbSync = async (_: unknown, next: MiddlewareNext) => {
 
 const auth = async (context: APIContext, next: MiddlewareNext) => {
   const sessionId = context.cookies.get(lucia.sessionCookieName)?.value ?? null
-  console.log('middleware sessionId', sessionId)
 
   if (!sessionId) {
     context.locals.user = null
@@ -24,7 +23,7 @@ const auth = async (context: APIContext, next: MiddlewareNext) => {
   }
 
   const { session, user } = await lucia.validateSession(sessionId)
-  console.log('middleware session', session)
+
   if (session && session.fresh) {
     const sessionCookie = lucia.createSessionCookie(session.id)
 
@@ -39,9 +38,6 @@ const auth = async (context: APIContext, next: MiddlewareNext) => {
 
   context.locals.session = session
   context.locals.user = user
-
-  console.log('middleware local session', context.locals.session)
-  console.log('middleware local user', context.locals.user)
 
   return next()
 }
