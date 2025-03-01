@@ -4,6 +4,7 @@ dist/
 .astro/
 
 # dependencies
+.yarn/install-*
 node_modules/
 
 # logs
